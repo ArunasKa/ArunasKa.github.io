@@ -1,9 +1,21 @@
+
+
+:root,
+    :root.light {
+    --bg-color: white;
+    --text-color:black
+    }
+    :root.dark {
+    --bg-color: rgba(0,25,30,255);
+    --text-color: rgba(170,170,170,255);
+    }
 body,
 html {
   height: 96%;
   width: 98%;
-  margin: 1%;
-  background-color: #cccc;
+  margin: 0% 1% 1% 1%;
+  padding: 0% ;
+  background-color:var(--bg-color);
 }
 #bg {
   background-image: url(/BG/andrew-coelho-aL7SA1ASVdQ-unsplash_op.jpg);
@@ -25,10 +37,11 @@ html {
   margin: 0rem;
   padding-bottom: 0rem;
   font-size: 1rem;
+  color: var(--text-color);
 }
 #Sidebar {
-  background-color: #f3e6ef;
-  color: black;
+  background-color:var(--bg-color);
+  color:--text-color;
   width: min-content;
   height: fit-content;
   padding: 1rem 0.5rem 1rem 0.5rem;
@@ -39,13 +52,14 @@ html {
 }
 
 #Infobar {
-  background-color: #f3e6ef;
+  background-color: var(--bg-color);
   width: 20rem;
   height: 26.5rem;
   border-radius: 0.5rem;
   position: absolute;
   z-index: 1;
   display: flex;
+  color: var(--text-color)
 }
 #Mainbar {
   width: 20rem;
@@ -64,24 +78,40 @@ html {
   align-items: center;
   justify-content: center;
 }
+#Header{
+  height: 3rem;
+}
+#ThemeButton{
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+#ThemeImage{
+  width: 2rem;
+  height: 2rem;
+  margin: .1rem;
+  padding: .1rem;
+}
 .ItemBoxElement {
   padding: 0.1rem;
   margin: 0.1rem;
 }
 #NameInMainBar {
   font-size: 2rem;
-  color: black;
+  color: --text-color;
 }
 #ExtraInfoInMainBar {
   font-size: 1rem;
-  color: black;
+  color: --text-color;
 }
 #ProfilePic {
-  background-color: rgba(243, 230, 239, 0.9);
+  background-color: var(--bg-color);
   width: 10rem;
   height: 10rem;
   border: 1rem solid;
-  border-color: #f3e6ef;
+  border-color: var(--bg-color);
   border-width: 0.5rem;
   border-radius: 50%;
 
@@ -109,7 +139,7 @@ p {
   margin: 1rem;
 }
 .SkillsList {
-  color: black;
+  color: --text-color;
   margin: 1px;
   height: 20rem;
   display: grid;
@@ -153,7 +183,7 @@ margin-left: 1rem;
   width: 320px;
 }
 .EducationList {
-  color: black;
+  color: --text-color;
   margin: 1px;
   height: 20rem;
   display: grid;

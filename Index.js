@@ -1,51 +1,105 @@
 //Sidebar hover
 var executed = false;
 var ItemCount = 0;
-//Intro image change on hover
-
+var darkMode = false;
+var setTheme = (theme) => (document.documentElement.className = theme);
+const themeImage = document.getElementById("ThemeImage");
 const IntroBox = document.getElementById("Intro");
 const IntroIcon = document.getElementById("IntroIcon");
+const SkillsBox = document.getElementById("Skills");
+const SkillsIcon = document.getElementById("SkillsIcon");
+const EducationBox = document.getElementById("Education");
+const EducationIcon = document.getElementById("EducationIcon");
+const ExperienceBox = document.getElementById("Experience");
+const ExperienceIcon = document.getElementById("ExperienceIcon");
+const ContactsBox = document.getElementById("Contact");
+const ContactsIcon = document.getElementById("ContactIcon");
+
+themeImage.addEventListener("click", function () {
+  if (darkMode == false) {
+    themeImage.src = "/BG/ThemeImg_Light.png";
+    darkMode = true;
+    setTheme = document.documentElement.className = "dark  ";
+    IntroIcon.src = ".//BG/user_light.png";
+    SkillsIcon.src = ".//BG/files_light.png";
+    EducationIcon.src = ".//BG/mortarboard_light.png";
+    ExperienceIcon.src = ".//BG/suitcase_light.png";
+    ContactsIcon.src = ".//BG/phone-call_light.png";
+  } else {
+    themeImage.src = "/BG/ThemeImg_dark.png";
+    darkMode = false;
+    setTheme = document.documentElement.className = "light";
+    IntroIcon.src = ".//BG/user.png";
+    SkillsIcon.src = ".//BG/files.png";
+    EducationIcon.src = ".//BG/mortarboard.png";
+    ExperienceIcon.src = ".//BG/suitcase.png";
+    ContactsIcon.src = ".//BG/phone-call.png";
+  }
+});
+
+//Intro image change on hover
 IntroBox.addEventListener("mouseover", function handleMouseOver() {
   IntroIcon.src = "/BG/user_Hover.png";
 });
 IntroBox.addEventListener("mouseout", function handleMouseOver() {
-  IntroIcon.src = "/BG/user.png";
+  if (darkMode == true) {
+    IntroIcon.src = ".//BG/user_light.png";
+  } else {
+    IntroIcon.src = "/BG/user.png";
+  }
 });
 //Skills image change on hover
-const SkillsBox = document.getElementById("Skills");
-const SkillsIcon = document.getElementById("SkillsIcon");
 SkillsBox.addEventListener("mouseover", function handleMouseOver() {
   SkillsIcon.src = "/BG/files_hover.png";
 });
 SkillsBox.addEventListener("mouseout", function handleMouseOver() {
-  SkillsIcon.src = "/BG/files.png";
+  
+  if (darkMode == true) {
+    SkillsIcon.src = ".//BG/files_light.png";
+  }
+  else{
+    SkillsIcon.src = "/BG/files.png";
+  }
 });
-//contact image change on hover
-const ContactsBox = document.getElementById("Contact");
-const ContactsIcon = document.getElementById("ContactIcon");
-ContactsBox.addEventListener("mouseover", function handleMouseOver() {
-  ContactsIcon.src = "/BG/phone-call_hover.png";
-});
-ContactsBox.addEventListener("mouseout", function handleMouseOver() {
-  ContactsIcon.src = "/BG/phone-call.png";
-});
+
 //Education image change on hover
-const EducationBox = document.getElementById("Education");
-const EducationIcon = document.getElementById("EducationIcon");
 EducationBox.addEventListener("mouseover", function handleMouseOver() {
   EducationIcon.src = "/BG/mortarboard_hover.png";
 });
 EducationBox.addEventListener("mouseout", function handleMouseOver() {
-  EducationIcon.src = "/BG/mortarboard.png";
+ 
+  if (darkMode == true) {
+    EducationIcon.src = ".//BG/mortarboard_light.png";
+  }
+  else{
+    EducationIcon.src = "/BG/mortarboard.png";
+  }
 });
 //Experience image change on hover
-const ExperienceBox = document.getElementById("Experience");
-const ExperienceIcon = document.getElementById("ExperienceIcon");
 ExperienceBox.addEventListener("mouseover", function handleMouseOver() {
   ExperienceIcon.src = "/BG/suitcase_hover.png";
 });
 ExperienceBox.addEventListener("mouseout", function handleMouseOver() {
-  ExperienceIcon.src = "/BG/suitcase.png";
+  
+  if (darkMode == true) {
+    ExperienceIcon.src = ".//BG/suitcase_light.png";
+  }
+  else{
+    ExperienceIcon.src = "/BG/suitcase.png";
+  }
+}); 
+//contact image change on hover
+ContactsBox.addEventListener("mouseover", function handleMouseOver() {
+  ContactsIcon.src = "/BG/phone-call_hover.png";
+});
+ContactsBox.addEventListener("mouseout", function handleMouseOver() {
+  
+  if (darkMode == true) {
+    ContactsIcon.src = ".//BG/phone-call_light.png";
+  }
+  else{
+    ContactsIcon.src = "/BG/phone-call.png";
+  }
 });
 //Open sidebar
 document.getElementById("ProfilePic").addEventListener("click", () => {
@@ -98,13 +152,9 @@ document.getElementById("Education").addEventListener("click", () => {
       "adipiscing elit. Ut fringilla tristique velit",
       "elit. Ut fringilla tristique veli",
     ],
-    [
-      "Lorem ipsum ",
-      "2022",
-      "adipiscing elit. Ut fringilla tristique velit",
-    ],
+    ["Lorem ipsum ", "2022", "adipiscing elit. Ut fringilla tristique velit"],
   ];
-  AddItem('Education',Education);
+  AddItem("Education", Education);
 });
 //Experience
 document.getElementById("Experience").addEventListener("click", () => {
@@ -132,7 +182,7 @@ document.getElementById("Experience").addEventListener("click", () => {
       "ipsum dolor sit , consectetur ",
     ],
   ];
-  AddItem('Experience',Experience);
+  AddItem("Experience", Experience);
 });
 //Contact
 document.getElementById("Contact").addEventListener("click", () => {
@@ -185,13 +235,13 @@ function AddSkills(skills) {
     InfobarTransition.classList.add("fade-in");
   });
 }
-function AddItem(Title,ItemList) {
+function AddItem(Title, ItemList) {
   var InfobarTransition = document.getElementById("InfobarTransition");
   InfobarTransition.classList.remove("fade-in");
   InfobarTransition.innerHTML = "";
-  ChangeinfobarInformation(Title,ItemList);
+  ChangeinfobarInformation(Title, ItemList);
 }
-function ChangeinfobarInformation(Title,ItemList) {
+function ChangeinfobarInformation(Title, ItemList) {
   setTimeout(function () {
     InfobarTransition.innerHTML = "";
     //add Item header
@@ -205,7 +255,7 @@ function ChangeinfobarInformation(Title,ItemList) {
     var ItemExtra = document.createElement("p");
     var Item = document.createElement("p");
     Item.innerHTML = ItemList[ItemCount][0];
-    for (var x = 1; x < ItemList.length+2; x++) {
+    for (var x = 1; x < ItemList.length + 2; x++) {
       ItemExtra.innerHTML +=
         '<span class="bullet ">&#9679  </span>' +
         ItemList[ItemCount][x] +
@@ -241,21 +291,15 @@ function ChangeinfobarInformation(Title,ItemList) {
       } else {
         ItemCount++;
       }
-      ChangeinfobarInformation(Title,ItemList);
+      ChangeinfobarInformation(Title, ItemList);
     });
 
-    nextItemButton.addEventListener(
-      "mouseover",
-      function handleMouseOver() {
-        nextItemButton.src = "/BG/right-chevron_hover-.png";
-      }
-    );
-    nextItemButton.addEventListener(
-      "mouseout",
-      function handleMouseOver() {
-        nextItemButton.src = "/BG/right-chevron-.png";
-      }
-    );
+    nextItemButton.addEventListener("mouseover", function handleMouseOver() {
+      nextItemButton.src = "/BG/right-chevron_hover-.png";
+    });
+    nextItemButton.addEventListener("mouseout", function handleMouseOver() {
+      nextItemButton.src = "/BG/right-chevron-.png";
+    });
 
     InfobarTransition.appendChild(ItemBox);
     InfobarTransition.appendChild(nextItemButton);
