@@ -79,12 +79,12 @@ document.getElementById("Intro").addEventListener("click", () => {
 //Skills
 document.getElementById("Skills").addEventListener("click", () => {
   const skills = [
-    "C# .NET basics knowledge",
-    "MySQL database basics",
-    "Html, css and Javascript understanding",
-    "3D model creating skills",
-    "3DS Max and blender knowledge",
-    "Adobe Photoshop basics",
+    "Lorem ipsum dolor sit amet",
+    "Lorem ipsum dolor sit amet",
+    "consectetur adipiscing elit.Ut fringilla",
+    "vitae congue libero luctus",
+    "adipiscing elit. Ut fringilla tristique velit",
+    "vitae congue libero luctus",
   ];
   AddSkills(skills);
 });
@@ -93,15 +93,15 @@ document.getElementById("Education").addEventListener("click", () => {
   ItemCount = 0;
   const Education = [
     [
-      "Vilnius Business college",
+      "Lorem ipsum dolor sit amet",
       "2017 - 2021",
-      "Bachelor of information technology",
-      "Interactive media and technology",
+      "adipiscing elit. Ut fringilla tristique velit",
+      "elit. Ut fringilla tristique veli",
     ],
     [
-      "CodeAcademy",
+      "Lorem ipsum ",
       "2022",
-      "Beginner and advanced level .NET course 480 hour",
+      "adipiscing elit. Ut fringilla tristique velit",
     ],
   ];
   AddItem('Education',Education);
@@ -111,25 +111,25 @@ document.getElementById("Experience").addEventListener("click", () => {
   ItemCount = 0;
   const Experience = [
     [
-      "Inlook Vilnius ",
+      "adipiscing elit",
       "March 2017 - may 2020",
-      "Information for cargo management, label preparation and directing cargo to designated locations.",
-      "Planned and implemented solutions to reduce time and price for movement of goods.",
-      "Loading, unloading and transfer of goods to ensure that they move to their desired places.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla tristique velit, vitae congue libero luctus vel..",
+      "dolor sit amet,  adipiscing elit. Ut fringilla  velit, vitae   luctus .",
+      "ipsum dolor sit , consectetur adipiscing . Ut fringilla tristique , vitae  libero  vel.",
     ],
     [
-      "Vilnius business College Communication and international relations department",
+      "dolor sit amet,   elit. Ut fringilla tristique velit,  congue libero luctus vel.",
       "December 2020 - february 2021",
-      "Writing subtitles in Lithuanian and English",
-      "Poster design creation",
-      "Collecting and designing information",
+      "Lorem ipsum dolor sit amet,   elit. Ut fringilla tristique velit,  congue libero luctus vel..",
+      "dolor sit amet,   elit. Ut fringilla  velit, vitae   luctus .",
+      "ipsum dolor sit ,  adipiscing . Ut fringilla  , vitae  libero  vel.",
     ],
     [
-      "Idėja3D",
+      "dolor",
       "December 2021 - January 2023",
-      "3D Model designing, creating and editing",
-      "3D model printing",
-      "Printed models cleaning",
+      "Lorem ipsum dolor sit amet, consectetur ",
+      "dolor sit amet,  ",
+      "ipsum dolor sit , consectetur ",
     ],
   ];
   AddItem('Experience',Experience);
