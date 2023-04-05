@@ -14,7 +14,13 @@ const ExperienceBox = document.getElementById("Experience");
 const ExperienceIcon = document.getElementById("ExperienceIcon");
 const ContactsBox = document.getElementById("Contact");
 const ContactsIcon = document.getElementById("ContactIcon");
-
+const Mainbar = document.getElementById("MainbarBg");
+const MainBg = document.getElementById("MainBg");
+//preloaded images(not worth loads to long)
+ MainbarLightimg =(new Image()).src = "./BG/filip-zrnzevic-QsWG0kjPQRY-unsplash.jpg";
+ MainbarDarkImg =(new Image()).src = "./BG/filip-zrnzevic-QsWG0kjPQRY-unsplash_Night.jpg";
+ MainBgLightImg =(new Image()).src = "./BG/andrew-coelho-aL7SA1ASVdQ-unsplash_op.jpg";
+ MainBgDarkImg =(new Image()).src = "./BG/andrew-coelho-aL7SA1ASVdQ-unsplash_op_night.jpg";
 themeImage.addEventListener("click", function () {
   if (darkMode == false) {
     themeImage.src = "/BG/ThemeImg_Light.png";
@@ -25,6 +31,8 @@ themeImage.addEventListener("click", function () {
     EducationIcon.src = ".//BG/mortarboard_light.png";
     ExperienceIcon.src = ".//BG/suitcase_light.png";
     ContactsIcon.src = ".//BG/phone-call_light.png";
+    Mainbar.src = MainbarDarkImg;
+    MainBg.src = MainBgDarkImg
   } else {
     themeImage.src = "/BG/ThemeImg_dark.png";
     darkMode = false;
@@ -34,6 +42,8 @@ themeImage.addEventListener("click", function () {
     EducationIcon.src = ".//BG/mortarboard.png";
     ExperienceIcon.src = ".//BG/suitcase.png";
     ContactsIcon.src = ".//BG/phone-call.png";
+    Mainbar.src = MainbarLightimg;
+    MainBg.src = MainBgLightImg
   }
 });
 
