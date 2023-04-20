@@ -1,11 +1,9 @@
-//Sidebar hover
-var executed = false;
-var ItemCount = 0;
-var darkMode = false;
-var setTheme = (theme) => (document.documentElement.className = theme);
-const themeImage = document.getElementById("ThemeImage");
-const IntroBox = document.getElementById("Intro");
-const IntroIcon = document.getElementById("IntroIcon");
+// fill profile
+AddInfo("John Doe", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+AddProfile();
+
+const ProfileBox = document.getElementById("Profile");
+const ProfileIcon = document.getElementById("ProfileIcon");
 const SkillsBox = document.getElementById("Skills");
 const SkillsIcon = document.getElementById("SkillsIcon");
 const EducationBox = document.getElementById("Education");
@@ -14,62 +12,20 @@ const ExperienceBox = document.getElementById("Experience");
 const ExperienceIcon = document.getElementById("ExperienceIcon");
 const ContactsBox = document.getElementById("Contact");
 const ContactsIcon = document.getElementById("ContactIcon");
-const Mainbar = document.getElementById("MainbarBg");
-const MainBg = document.getElementById("MainBg");
-//preloaded images(not worth loads to long)
- MainbarLightimg =(new Image()).src = "./BG/filip-zrnzevic-QsWG0kjPQRY-unsplash.jpg";
- MainbarDarkImg =(new Image()).src = "./BG/filip-zrnzevic-QsWG0kjPQRY-unsplash_Night.jpg";
- MainBgLightImg =(new Image()).src = "./BG/andrew-coelho-aL7SA1ASVdQ-unsplash_op.jpg";
- MainBgDarkImg =(new Image()).src = "./BG/andrew-coelho-aL7SA1ASVdQ-unsplash_op_night.jpg";
-themeImage.addEventListener("click", function () {
-  if (darkMode == false) {
-    themeImage.src = "/BG/ThemeImg_Light.png";
-    darkMode = true;
-    setTheme = document.documentElement.className = "dark  ";
-    IntroIcon.src = ".//BG/user_light.png";
-    SkillsIcon.src = ".//BG/files_light.png";
-    EducationIcon.src = ".//BG/mortarboard_light.png";
-    ExperienceIcon.src = ".//BG/suitcase_light.png";
-    ContactsIcon.src = ".//BG/phone-call_light.png";
-    Mainbar.src = MainbarDarkImg;
-    MainBg.src = MainBgDarkImg
-  } else {
-    themeImage.src = "/BG/ThemeImg_dark.png";
-    darkMode = false;
-    setTheme = document.documentElement.className = "light";
-    IntroIcon.src = ".//BG/user.png";
-    SkillsIcon.src = ".//BG/files.png";
-    EducationIcon.src = ".//BG/mortarboard.png";
-    ExperienceIcon.src = ".//BG/suitcase.png";
-    ContactsIcon.src = ".//BG/phone-call.png";
-    Mainbar.src = MainbarLightimg;
-    MainBg.src = MainBgLightImg
-  }
+//#region mouseover
+//Profile image change on hover
+ProfileBox.addEventListener("mouseover", function handleMouseOver() {
+  ProfileIcon.src = "/BG/user_Hover.png";
 });
-
-//Intro image change on hover
-IntroBox.addEventListener("mouseover", function handleMouseOver() {
-  IntroIcon.src = "/BG/user_Hover.png";
-});
-IntroBox.addEventListener("mouseout", function handleMouseOver() {
-  if (darkMode == true) {
-    IntroIcon.src = ".//BG/user_light.png";
-  } else {
-    IntroIcon.src = "/BG/user.png";
-  }
+ProfileBox.addEventListener("mouseout", function handleMouseOver() {
+  ProfileIcon.src = "/BG/user.png";
 });
 //Skills image change on hover
 SkillsBox.addEventListener("mouseover", function handleMouseOver() {
   SkillsIcon.src = "/BG/files_hover.png";
 });
 SkillsBox.addEventListener("mouseout", function handleMouseOver() {
-  
-  if (darkMode == true) {
-    SkillsIcon.src = ".//BG/files_light.png";
-  }
-  else{
-    SkillsIcon.src = "/BG/files.png";
-  }
+  SkillsIcon.src = "/BG/files.png";
 });
 
 //Education image change on hover
@@ -77,68 +33,32 @@ EducationBox.addEventListener("mouseover", function handleMouseOver() {
   EducationIcon.src = "/BG/mortarboard_hover.png";
 });
 EducationBox.addEventListener("mouseout", function handleMouseOver() {
- 
-  if (darkMode == true) {
-    EducationIcon.src = ".//BG/mortarboard_light.png";
-  }
-  else{
-    EducationIcon.src = "/BG/mortarboard.png";
-  }
+  EducationIcon.src = "/BG/mortarboard.png";
 });
 //Experience image change on hover
 ExperienceBox.addEventListener("mouseover", function handleMouseOver() {
   ExperienceIcon.src = "/BG/suitcase_hover.png";
 });
 ExperienceBox.addEventListener("mouseout", function handleMouseOver() {
-  
-  if (darkMode == true) {
-    ExperienceIcon.src = ".//BG/suitcase_light.png";
-  }
-  else{
-    ExperienceIcon.src = "/BG/suitcase.png";
-  }
-}); 
+  ExperienceIcon.src = "/BG/suitcase.png";
+});
 //contact image change on hover
 ContactsBox.addEventListener("mouseover", function handleMouseOver() {
   ContactsIcon.src = "/BG/phone-call_hover.png";
 });
 ContactsBox.addEventListener("mouseout", function handleMouseOver() {
-  
-  if (darkMode == true) {
-    ContactsIcon.src = ".//BG/phone-call_light.png";
-  }
-  else{
-    ContactsIcon.src = "/BG/phone-call.png";
-  }
+  ContactsIcon.src = "/BG/phone-call.png";
 });
-//Open sidebar
-document.getElementById("ProfilePic").addEventListener("click", () => {
-  var SideTransition = document.getElementById("Sidebar");
-  setTimeout(() => {
-    SideTransition.classList.add("TransitionLeft");
-
-    if (!executed) {
-      executed = true;
-      AddInfo(
-        "Intro",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla tristique velit, vitae congue libero luctus vel. Sed vitae eros a ex tincidunt tristique. Sed aliquet nibh tellus, dictum tempor orci semper quis. Nulla facilisi. Curabitur a erat venenatis, cursus ligula sed, ullamcorper orci. Morbi dapibus laoreet velit, non faucibus odio viverra nec. Proin nec nulla eu purus suscipit bibendum porta in erat"
-      );
-    }
-  }, 10);
-});
-//Open infobar
-document.getElementById("Sidebar").addEventListener("click", () => {
-  var InfobarTransition = document.getElementById("Infobar");
-  setTimeout(() => {
-    InfobarTransition.classList.add("TransitionRight");
-  }, 10);
-});
-//Intro
-document.getElementById("Intro").addEventListener("click", () => {
+//#endregion
+//Profile
+//#region Click sidebar elements
+//Profile
+document.getElementById("Profile").addEventListener("click", () => {
   AddInfo(
-    "Intro",
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla tristique velit, vitae congue libero luctus vel. Sed vitae eros a ex tincidunt tristique. Sed aliquet nibh tellus, dictum tempor orci semper quis. Nulla facilisi. Curabitur a erat venenatis, cursus ligula sed, ullamcorper orci. Morbi dapibus laoreet velit, non faucibus odio viverra nec. Proin nec nulla eu purus suscipit bibendum porta in erat"
+    "John Doe",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   );
+  AddProfile();
 });
 //Skills
 document.getElementById("Skills").addEventListener("click", () => {
@@ -150,6 +70,7 @@ document.getElementById("Skills").addEventListener("click", () => {
     "adipiscing elit. Ut fringilla tristique velit",
     "vitae congue libero luctus",
   ];
+  AddInfo("Skills","");
   AddSkills(skills);
 });
 //Education
@@ -201,118 +122,117 @@ document.getElementById("Contact").addEventListener("click", () => {
     "Cras fermentum rhoncus eros, ut porta erat maximus ac. Vivamus eget ipsum quis ex blandit bibendum. Pellentesque semper rutrum aliquet. Praesent sapien mauris, tincidunt in viverra in, ornare sit amet sapien. Phasellus efficitur dignissim facilisis. Pellentesque felis erat, finibus luctus sodales volutpat, pulvinar ac metus. Aliquam erat volutpat."
   );
 });
-//fill in information to information bar on right
+
 function AddInfo(header, mainInfo) {
-  var InfobarTransition = document.getElementById("InfobarTransition");
-
-  InfobarTransition.classList.remove("fade-in");
-  InfobarTransition.innerHTML = "";
-  setTimeout(function () {
-    //header
-    var InfobarHeader = document.createElement("h1");
-    InfobarHeader.innerHTML = header;
-    InfobarTransition.appendChild(InfobarHeader);
-    //Main text
-    var InfobarText = document.createElement("p");
+  var MainWindow = document.getElementById("Mainbar");
+  MainWindow.innerHTML = "";
+  //header
+  var InfobarHeader = document.createElement("h1");
+  InfobarHeader.innerHTML = header;
+  InfobarHeader.classList.add("MainWindowTitle");
+  MainWindow.appendChild(InfobarHeader);
+  //Main text
+  if(mainInfo!=""){
+    var InfobarText = document.createElement("div");
     InfobarText.innerHTML = mainInfo;
-    InfobarTransition.appendChild(InfobarText);
+    InfobarText.classList.add("MainWindowText");
+    MainWindow.appendChild(InfobarText);
 
-    //fade in
-    InfobarTransition.classList.add("fade-in");
-  });
+  }
+}
+function AddProfile() {
+  var MainWindow = document.querySelector(".MainWindowText");
+  var ProfilePic = document.createElement("div");
+  ProfilePic.id = "ProfilePic";
+  var ProfileImg = document.createElement("img");
+  ProfileImg.src = "/BG/user.png";
+  ProfileImg.alt = "Profile picture";
+  ProfilePic.appendChild(ProfileImg);
+  MainWindow.appendChild(ProfilePic);
 }
 function AddSkills(skills) {
-  //Get element and clear it
-  var InfobarTransition = document.getElementById("InfobarTransition");
-  InfobarTransition.classList.remove("fade-in");
-  InfobarTransition.innerHTML = "";
-  setTimeout(function () {
-    //add Skills header
-    var InfobarHeader = document.createElement("h1");
-    InfobarHeader.innerHTML = "Skills";
-    InfobarTransition.appendChild(InfobarHeader);
-    //add Skills skills
-    var skillList = document.createElement("div");
-    skillList.classList.add("SkillsList");
-    for (var i = 0; i < skills.length; i++) {
-      var skill = document.createElement("p");
-      skill.innerHTML = '<span class="bullet ">&#9679  </span>' + skills[i];
-      skill.classList.add("SkillListElement");
-      skillList.appendChild(skill);
-    }
-
-    InfobarTransition.appendChild(skillList);
-    InfobarTransition.classList.add("fade-in");
-  });
-}
-function AddItem(Title, ItemList) {
-  var InfobarTransition = document.getElementById("InfobarTransition");
-  InfobarTransition.classList.remove("fade-in");
-  InfobarTransition.innerHTML = "";
-  ChangeinfobarInformation(Title, ItemList);
-}
-function ChangeinfobarInformation(Title, ItemList) {
-  setTimeout(function () {
-    InfobarTransition.innerHTML = "";
-    //add Item header
-    var InfobarHeader = document.createElement("h1");
-    InfobarHeader.innerHTML = Title;
-    InfobarTransition.appendChild(InfobarHeader);
-    //add Item skills
-    var ItemBox = document.createElement("div");
-    ItemBox.classList.add("ItemBox");
-
-    var ItemExtra = document.createElement("p");
-    var Item = document.createElement("p");
-    Item.innerHTML = ItemList[ItemCount][0];
-    for (var x = 1; x < ItemList.length + 2; x++) {
-      ItemExtra.innerHTML +=
-        '<span class="bullet ">&#9679  </span>' +
-        ItemList[ItemCount][x] +
-        "<br>";
-    }
-    Item.classList.add("ItemBoxElement");
-
-    Item.appendChild(ItemExtra);
-    ItemBox.appendChild(Item);
-    // add page count dot
-    var Infobarcount = document.createElement("p");
-    Infobarcount.innerHTML += "";
-    for (var a = 1; a < ItemList.length + 1; a++) {
-      if (a - 1 == ItemCount) {
-        Infobarcount.innerHTML +=
-          '<span class="PageCountGreen ">&#9679  </span>';
-      } else {
-        Infobarcount.innerHTML +=
-          '<span class="PageCountGray ">&#9679  </span>';
+    //Get element and clear it
+    var MainWindow = document.getElementById("Mainbar");
+    setTimeout(function () {
+      //add Skills skills
+      var skillList = document.createElement("div");
+      skillList.classList.add("SkillsList");
+      for (var i = 0; i < skills.length; i++) {
+        var skill = document.createElement("p");
+        skill.innerHTML = '<span class="bullet ">&#9679  </span>' + skills[i];
+        skill.classList.add("SkillListElement");
+        skillList.appendChild(skill);
       }
-    }
-    Infobarcount.classList.add("PageCount");
-
-    InfobarTransition.appendChild(Infobarcount);
-    //Create image to cycle Item
-    var nextItemButton = document.createElement("img");
-    nextItemButton.classList.add("nextItemButton");
-    nextItemButton.src = "/BG/right-chevron-.png";
-
-    nextItemButton.addEventListener("click", () => {
-      if (ItemCount + 1 >= ItemList.length) {
-        ItemCount = 0;
-      } else {
-        ItemCount++;
+  
+      MainWindow.appendChild(skillList);
+    });
+  }
+  function AddItem(Title, ItemList) {
+    var MainWindow = document.getElementById("Mainbar");
+    MainWindow.innerHTML = "";
+    ChangeMainWindowInfo(Title, ItemList);
+  }
+  function ChangeMainWindowInfo(Title, ItemList) {
+    setTimeout(function () {
+        var MainWindow = document.getElementById("Mainbar");
+        MainWindow.innerHTML = "";
+      //add Item header
+      AddInfo(Title,"");
+      //add Item skills
+      var ItemBox = document.createElement("div");
+      ItemBox.classList.add("ItemBox");
+  
+      var ItemExtra = document.createElement("p");
+      var Item = document.createElement("p");
+      Item.innerHTML = ItemList[ItemCount][0];
+      for (var x = 1; x < ItemList.length + 2; x++) {
+        ItemExtra.innerHTML +=
+          '<span class="bullet ">&#9679  </span>' +
+          ItemList[ItemCount][x] +
+          "<br>";
       }
-      ChangeinfobarInformation(Title, ItemList);
-    });
-
-    nextItemButton.addEventListener("mouseover", function handleMouseOver() {
-      nextItemButton.src = "/BG/right-chevron_hover-.png";
-    });
-    nextItemButton.addEventListener("mouseout", function handleMouseOver() {
+      Item.classList.add("ItemBoxElement");
+  
+      Item.appendChild(ItemExtra);
+      ItemBox.appendChild(Item);
+      // add page count dot
+      var Infobarcount = document.createElement("p");
+      Infobarcount.innerHTML += "";
+      for (var a = 1; a < ItemList.length + 1; a++) {
+        if (a - 1 == ItemCount) {
+          Infobarcount.innerHTML +=
+            '<span class="PageCountGreen ">&#9679  </span>';
+        } else {
+          Infobarcount.innerHTML +=
+            '<span class="PageCountGray ">&#9679  </span>';
+        }
+      }
+      Infobarcount.classList.add("nextItemButton");
+  
+      MainWindow.appendChild(Infobarcount);
+      //Create image to cycle Item
+      var nextItemButton = document.createElement("img");
+      nextItemButton.classList.add("nextItemButton");
       nextItemButton.src = "/BG/right-chevron-.png";
+  
+      nextItemButton.addEventListener("click", () => {
+        if (ItemCount + 1 >= ItemList.length) {
+          ItemCount = 0;
+        } else {
+          ItemCount++;
+        }
+        ChangeMainWindowInfo(Title, ItemList);
+      });
+  
+      nextItemButton.addEventListener("mouseover", function handleMouseOver() {
+        nextItemButton.src = "/BG/right-chevron_hover-.png";
+      });
+      nextItemButton.addEventListener("mouseout", function handleMouseOver() {
+        nextItemButton.src = "/BG/right-chevron-.png";
+      });
+  
+      MainWindow.appendChild(ItemBox);
+      MainWindow.appendChild(nextItemButton);
     });
-
-    InfobarTransition.appendChild(ItemBox);
-    InfobarTransition.appendChild(nextItemButton);
-    InfobarTransition.classList.add("fade-in");
-  });
-}
+  }
+//#endregion
