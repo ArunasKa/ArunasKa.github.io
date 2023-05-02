@@ -1,5 +1,9 @@
 // fill profile
-AddInfo("John Doe", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+AddInfo(
+  "John Doe",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  ""
+);
 AddProfile();
 
 const ProfileBox = document.getElementById("Profile");
@@ -27,7 +31,6 @@ SkillsBox.addEventListener("mouseover", function handleMouseOver() {
 SkillsBox.addEventListener("mouseout", function handleMouseOver() {
   SkillsIcon.src = "/BG/files.png";
 });
-
 //Education image change on hover
 EducationBox.addEventListener("mouseover", function handleMouseOver() {
   EducationIcon.src = "/BG/mortarboard_hover.png";
@@ -56,7 +59,8 @@ ContactsBox.addEventListener("mouseout", function handleMouseOver() {
 document.getElementById("Profile").addEventListener("click", () => {
   AddInfo(
     "John Doe",
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    ""
   );
   AddProfile();
 });
@@ -70,7 +74,7 @@ document.getElementById("Skills").addEventListener("click", () => {
     "adipiscing elit. Ut fringilla tristique velit",
     "vitae congue libero luctus",
   ];
-  AddInfo("Skills","");
+  AddInfo("Skills", "", "");
   AddSkills(skills);
 });
 //Education
@@ -119,11 +123,12 @@ document.getElementById("Experience").addEventListener("click", () => {
 document.getElementById("Contact").addEventListener("click", () => {
   AddInfo(
     "Contact",
+    "",
     "Cras fermentum rhoncus eros, ut porta erat maximus ac. Vivamus eget ipsum quis ex blandit bibendum. Pellentesque semper rutrum aliquet. Praesent sapien mauris, tincidunt in viverra in, ornare sit amet sapien. Phasellus efficitur dignissim facilisis. Pellentesque felis erat, finibus luctus sodales volutpat, pulvinar ac metus. Aliquam erat volutpat."
   );
 });
 
-function AddInfo(header, mainInfo) {
+function AddInfo(header, header2, mainInfo) {
   var MainWindow = document.getElementById("Mainbar");
   MainWindow.innerHTML = "";
   //header
@@ -131,108 +136,124 @@ function AddInfo(header, mainInfo) {
   InfobarHeader.innerHTML = header;
   InfobarHeader.classList.add("MainWindowTitle");
   MainWindow.appendChild(InfobarHeader);
+  //header2
+  if (header2 != "") {
+    var Header2 = document.createElement("h2");
+    Header2.innerHTML = header2;
+    Header2.classList.add("Header2");
+    MainWindow.appendChild(Header2);
+  }
   //Main text
-  if(mainInfo!=""){
+  if (mainInfo != "") {
     var InfobarText = document.createElement("div");
     InfobarText.innerHTML = mainInfo;
     InfobarText.classList.add("MainWindowText");
     MainWindow.appendChild(InfobarText);
-
   }
 }
 function AddProfile() {
-  var MainWindow = document.querySelector(".MainWindowText");
+  if (document.querySelector(".MainWindowText") != null) {
+    var MainWindow = document.querySelector(".MainWindowText");
+  } else {
+    var MainWindow = document.querySelector(".Header2");
+  }
   var ProfilePic = document.createElement("div");
   ProfilePic.id = "ProfilePic";
   var ProfileImg = document.createElement("img");
-  ProfileImg.src = "/BG/user.png";
+  ProfileImg.style.backgroundColor = "#4d617b";
   ProfileImg.alt = "Profile picture";
+  ProfileImg.style.lineHeight = "10rem";
+  ProfileImg.style.textAlign = "center";
+  ProfileImg.style.width = "11rem";
+  ProfileImg.style.height = "10rem";
+  ProfileImg.style.borderColor = "#4d617b";
+  ProfileImg.style.borderRadius = "50%"
   ProfilePic.appendChild(ProfileImg);
   MainWindow.appendChild(ProfilePic);
 }
 function AddSkills(skills) {
-    //Get element and clear it
-    var MainWindow = document.getElementById("Mainbar");
-    setTimeout(function () {
-      //add Skills skills
-      var skillList = document.createElement("div");
-      skillList.classList.add("SkillsList");
-      for (var i = 0; i < skills.length; i++) {
-        var skill = document.createElement("p");
-        skill.innerHTML = '<span class="bullet ">&#9679  </span>' + skills[i];
-        skill.classList.add("SkillListElement");
-        skillList.appendChild(skill);
-      }
-  
-      MainWindow.appendChild(skillList);
-    });
-  }
-  function AddItem(Title, ItemList) {
+  //Get element and clear it
+  var MainWindow = document.getElementById("Mainbar");
+  setTimeout(function () {
+    //add Skills skills
+    var skillList = document.createElement("div");
+    skillList.classList.add("SkillsList");
+    for (var i = 0; i < skills.length; i++) {
+      var skill = document.createElement("p");
+      skill.innerHTML = '<span class="bullet ">&#9679  </span>' + skills[i];
+      skill.classList.add("SkillListElement");
+      skillList.appendChild(skill);
+    }
+
+    MainWindow.appendChild(skillList);
+  });
+}
+function AddItem(Title, ItemList) {
+  var MainWindow = document.getElementById("Mainbar");
+  MainWindow.innerHTML = "";
+  ChangeMainWindowInfo(Title, ItemList);
+}
+function ChangeMainWindowInfo(Title, ItemList) {
+  setTimeout(function () {
     var MainWindow = document.getElementById("Mainbar");
     MainWindow.innerHTML = "";
-    ChangeMainWindowInfo(Title, ItemList);
-  }
-  function ChangeMainWindowInfo(Title, ItemList) {
-    setTimeout(function () {
-        var MainWindow = document.getElementById("Mainbar");
-        MainWindow.innerHTML = "";
-      //add Item header
-      AddInfo(Title,"");
-      //add Item skills
-      var ItemBox = document.createElement("div");
-      ItemBox.classList.add("ItemBox");
-  
-      var ItemExtra = document.createElement("p");
-      var Item = document.createElement("p");
-      Item.innerHTML = ItemList[ItemCount][0];
-      for (var x = 1; x < ItemList.length + 2; x++) {
-        ItemExtra.innerHTML +=
-          '<span class="bullet ">&#9679  </span>' +
-          ItemList[ItemCount][x] +
-          "<br>";
+    //add Item header
+    AddInfo(Title, "", "");
+    //add Item skills
+    var ItemBox = document.createElement("div");
+    ItemBox.classList.add("ItemBox");
+
+    var ItemExtra = document.createElement("p");
+    var Item = document.createElement("p");
+    Item.innerHTML = ItemList[ItemCount][0];
+    for (var x = 1; x < ItemList.length + 2; x++) {
+      ItemExtra.innerHTML +=
+        '<span class="bullet ">&#9679  </span>' +
+        ItemList[ItemCount][x] +
+        "<br>";
+    }
+    Item.classList.add("ItemBoxElement");
+
+    Item.appendChild(ItemExtra);
+    ItemBox.appendChild(Item);
+    // add page count dot
+    var Infobarcount = document.createElement("p");
+    Infobarcount.innerHTML += "";
+    for (var a = 1; a < ItemList.length + 1; a++) {
+      if (a - 1 == ItemCount) {
+        Infobarcount.innerHTML +=
+          '<span class="PageCountGreen ">&#9679  </span>';
+      } else {
+        Infobarcount.innerHTML +=
+          '<span class="PageCountGray ">&#9679  </span>';
       }
-      Item.classList.add("ItemBoxElement");
-  
-      Item.appendChild(ItemExtra);
-      ItemBox.appendChild(Item);
-      // add page count dot
-      var Infobarcount = document.createElement("p");
-      Infobarcount.innerHTML += "";
-      for (var a = 1; a < ItemList.length + 1; a++) {
-        if (a - 1 == ItemCount) {
-          Infobarcount.innerHTML +=
-            '<span class="PageCountGreen ">&#9679  </span>';
-        } else {
-          Infobarcount.innerHTML +=
-            '<span class="PageCountGray ">&#9679  </span>';
-        }
+    }
+    Infobarcount.classList.add("nextItemButton");
+
+    MainWindow.appendChild(Infobarcount);
+    //Create image to cycle Item
+    var nextItemButton = document.createElement("img");
+    nextItemButton.classList.add("nextItemButton");
+    nextItemButton.src = "/BG/right-chevron-.png";
+
+    nextItemButton.addEventListener("click", () => {
+      if (ItemCount + 1 >= ItemList.length) {
+        ItemCount = 0;
+      } else {
+        ItemCount++;
       }
-      Infobarcount.classList.add("nextItemButton");
-  
-      MainWindow.appendChild(Infobarcount);
-      //Create image to cycle Item
-      var nextItemButton = document.createElement("img");
-      nextItemButton.classList.add("nextItemButton");
-      nextItemButton.src = "/BG/right-chevron-.png";
-  
-      nextItemButton.addEventListener("click", () => {
-        if (ItemCount + 1 >= ItemList.length) {
-          ItemCount = 0;
-        } else {
-          ItemCount++;
-        }
-        ChangeMainWindowInfo(Title, ItemList);
-      });
-  
-      nextItemButton.addEventListener("mouseover", function handleMouseOver() {
-        nextItemButton.src = "/BG/right-chevron_hover-.png";
-      });
-      nextItemButton.addEventListener("mouseout", function handleMouseOver() {
-        nextItemButton.src = "/BG/right-chevron-.png";
-      });
-  
-      MainWindow.appendChild(ItemBox);
-      MainWindow.appendChild(nextItemButton);
+      ChangeMainWindowInfo(Title, ItemList);
     });
-  }
+
+    nextItemButton.addEventListener("mouseover", function handleMouseOver() {
+      nextItemButton.src = "/BG/right-chevron_hover-.png";
+    });
+    nextItemButton.addEventListener("mouseout", function handleMouseOver() {
+      nextItemButton.src = "/BG/right-chevron-.png";
+    });
+
+    MainWindow.appendChild(ItemBox);
+    MainWindow.appendChild(nextItemButton);
+  });
+}
 //#endregion
